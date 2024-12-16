@@ -45,6 +45,7 @@
     font-weight: 500;
     font-size: 0.9em;
     padding: 0.4em 0.8em;
+    margin-right: 0.5em;
 }
 
 /* Domain badges */
@@ -292,7 +293,7 @@ ul {
 
 .table th:nth-child(5),
 .table td:nth-child(5) {
-    width: 120px;
+    width: 140px;
 }
 
 .table th:nth-child(6),
