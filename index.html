@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>o1 Model Evaluations</title>
+  <link rel="stylesheet" href="./src/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/all.min.css">
+  <link rel="stylesheet" href="./css.css">
+  <script src="./src/bootstrap.bundle.min.js"></script>
+</head>
+
+<body style="position: relative; min-height:100vh;">
+  <div class="jumbotron text-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1>o1 Model Evaluations</h1>
+          <p class="lead">Evidence and benchmarks showing how large reasoning models (o1) compare to large language models (GPT-4) across different domains</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="description-box mb-4">
+          <p>This website compiles available evidence on how o1's reasoning capabilities compare to previous models. The evidence is organized by domain and includes both improvements and areas without significant progress. Each entry includes links to sources and detailed findings.</p>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table" id="evidenceTable">
+            <thead>
+              <tr>
+                <th style="width: 120px">
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-light dropdown-toggle w-100" type="button" id="domainDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      Domain
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="domainDropdown">
+                      <li><a class="dropdown-item" href="#" onclick="sortTable('asc')">Sort A-Z</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="sortTable('desc')">Sort Z-A</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><h6 class="dropdown-header">Filter by Domain</h6></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('all')">Show All</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Coding')">Coding</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Reliability')">Reliability</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Mathematics')">Mathematics</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Cybersecurity')">Cybersecurity</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Planning')">Planning</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Legal/Medical')">Legal/Medical</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Translation')">Translation</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Reproducibility')">Reproducibility</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('GAIA')">GAIA</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Safety')">Safety</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Writing')">Writing</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Human Tasks')">Human Tasks</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Scaling')">Scaling</a></li>
+                    </ul>
+                  </div>
+                </th>
+                <th style="width: 140px">Evidence Type</th>
+                <th>Description</th>
+                <th style="width: 140px">Source</th>
+                <th style="width: 120px">Status</th>
+                <th style="width: 100px">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Coding -->
+              <tr>
+                <td><span class="badge bg-domain-1">Coding</span></td>
+                <td>Internal Evaluation</td>
+                <td>Evaluation of o1's reasoning capabilities with Devin using cognition-golden benchmark</td>
+                <td><a href="https://x.com/cognition_labs/status/1834292718174077014" target="_blank">Cognition Labs</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#cognitionDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="cognitionDetails">
+                    <div class="card card-body">
+                      <ul>
+                        <li><strong>Evaluation Method:</strong> They evaluate their SWE agent Devin with an internal benchmark called 'cognition-golden'. We created realistic evaluations for economically valuable tasks, sometimes on codebases with millions of lines of code. The environments are fully reproducible and have autonomous feedback.</li>
+                        <li><strong>Key Findings:</strong>
+                          <ul>
+                            <li>Improved reflection and analysis capabilities</li>
+                            <li>Better at backtracking and considering different options</li>
+                            <li>Reduced hallucination and confident incorrectness</li>
+                            <li>Better at diagnosing root causes vs addressing symptoms</li>
+                          </ul>
+                        </li>
+                        <li><strong>Evaluation Framework:</strong>
+                          <ul>
+                            <li>'cognition-golden' benchmark with realistic, economically valuable tasks</li>
+                            <li>Tests on large codebases (millions of lines)</li>
+                            <li>Fully reproducible environments with autonomous feedback</li>
+                            <li>Uses simulated users for interaction testing</li>
+                            <li>Employs agent-based evaluation with visual verification</li>
+                          </ul>
+                        </li>
+                        <li><strong>Prompting Insights:</strong>
+                          <ul>
+                            <li>Direct answers often better than chain-of-thought prompting</li>
+                            <li>Requires denser context, sensitive to token clutter</li>
+                            <li>Less effective with highly prescriptive instructions</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="badge bg-domain-1">Coding</span></td>
+                <td>Official Evaluation</td>
+                <td>OpenAI's official evaluation of o1 on coding tasks</td>
+                <td><a href="https://openai.com/index/learning-to-reason-with-llms/" target="_blank">OpenAI</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#openaiCodingDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="openaiCodingDetails">
+                    <div class="card card-body">
+                      <p>Part of the official OpenAI o1 evaluations focused on coding and programming, where o1 achieved notable improvements. In the International Olympiad in Informatics (IOI), it ranked competitively under standard conditions and performed even better with relaxed constraints. In Codeforces evaluations, o1 surpassed prior models.</p>
+                      <div class="eval-images mt-3">
+                        <div class="text-center mb-3">
+                          <img src="src/codeforces_competition.png" alt="Codeforces Competition" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>Codeforces Competition</small></p>
+                        </div>
+                        <div class="text-center mb-3">
+                          <img src="src/codeforces_elo.webp" alt="Codeforces Elo Comparison" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>Codeforces Elo Comparison Graph</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="badge bg-domain-1">Coding</span></td>
+                <td>Competition</td>
+                <td>Performance on USACO programming competition tasks</td>
+                <td><a href="https://x.com/BenShi34/status/1841204327811334350" target="_blank">USACO Results</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#usacoDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="usacoDetails">
+                    <div class="card card-body">
+                      On USACO, o1 outperformed GPT-4 and increased the Pass@1 accuracy from 11.2% to 33.88%
+                      <div class="text-center mt-3">
+                        <img src="src/usaco_results.jpeg" alt="USACO results" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>USACO Pass@1 Accuracy</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Reliability & QA -->
+              <tr>
+                <td><span class="badge bg-domain-2">Reliability</span></td>
+                <td>Official Evaluation</td>
+                <td>OpenAI's evaluation of model reliability</td>
+                <td><a href="https://files.slack.com/files-tmb/T040NSQES-F0841FWSG1Z-f9f0d71cb7/image_720.png" target="_blank">OpenAI</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#reliabilityDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="reliabilityDetails">
+                    <div class="card card-body">
+                      Official evaluations showing improved worst of 4 performance on math, coding, and qa tasks
+                      <div class="text-center mt-3">
+                        <img src="src/reliability.png" alt="OpenAI Reliability" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>OpenAI Reliability</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="badge bg-domain-2">QA</span></td>
+                <td>Official Evaluation</td>
+                <td>Question answering capabilities evaluation</td>
+                <td><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#qaDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="qaDetails">
+                    <div class="card card-body">
+                      o1 improves over GPT-4o on a wide range of benchmarks, including 54/57 MMLU subcategories.
+                      <div class="text-center mt-3">
+                        <img src="src/qa.png" alt="OpenAI QA" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>OpenAI QA</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Mathematics -->
+              <tr>
+                <td><span class="badge bg-domain-3">Mathematics</span></td>
+                <td>Official Evaluation</td>
+                <td>Evaluation of mathematical reasoning capabilities</td>
+                <td><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#mathDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="mathDetails">
+                    <div class="card card-body">
+                      Official evaluations showing significant improvements in mathematical reasoning.
+                      <div class="text-center mt-3">
+                        <img src="src/codeforces_competition.png" alt="OpenAI Math" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>OpenAI Math</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Cybersecurity -->
+              <tr>
+                <td><span class="badge bg-domain-4">Cybersecurity</span></td>
+                <td>Research Evaluation</td>
+                <td>Evaluation by Turing Institute on cybersecurity capabilities</td>
+                <td><a href="https://arxiv.org/pdf/2410.21939" target="_blank">Turing Institute</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#cyberDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="cyberDetails">
+                    <div class="card card-body">
+                      The key evaluation findings for the OpenAI o1 model in this paper highlight good performance in automated software exploitation tasks. Using DARPA’s AI Cyber Challenge (AIxCC) framework, o1-preview achieved the highest success rate among tested models, solving 64.71% of the challenge project vulnerabilities (CPVs). This performance significantly surpassed other models. The o1-mini variant, though more cost-efficient, showed reduced efficacy.
+                      <div class="text-center mt-3">
+                        <img src="src/turing_cybersecurity.png" alt="Turing Cybersecurity" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Turing Cybersecurity</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="badge bg-domain-4">Cybersecurity</span></td>
+                <td>Benchmark</td>
+                <td>Official cybersecurity benchmark results</td>
+                <td>
+                  <a href="https://cybench.github.io/" target="_blank">CyBench</a>
+                  <br>
+                  <a href="https://agent-evals-leaderboard.hf.space" target="_blank">HAL Evals</a>
+                </td>
+                <td><span class="badge bg-danger">No Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#cyberBenchDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="cyberBenchDetails">
+                    <div class="card card-body">
+                      No significant improvements shown in the CyBench benchmark. Cybench includes 40 professional-level Capture the Flag (CTF) tasks from 4 distinct CTF competitions, chosen to be recent, meaningful, and spanning a wide range of difficulties. This task requires o1 being used as part of an agent scaffold.
+                      <div class="text-center mt-3">
+                        <img src="src/cyberbench.png" alt="Cyberbench" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Cyberbench</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Planning -->
+              <tr>
+                <td><span class="badge bg-domain-5">Planning</span></td>
+                <td>Research Paper</td>
+                <td>Analysis of planning and reasoning capabilities on benchmarks</td>
+                <td><a href="https://arxiv.org/pdf/2409.13373" target="_blank">Rao et al.</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#planningDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="planningDetails">
+                    <div class="card card-body">
+                      <div class="text-center mt-3">
+                        <img src="src/rao_planning.png" alt="Rao Planning" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>o1 performance on Blocksworld and other planning benchmarks</small></p>
+                      </div>
+                      <ul>
+                        <li><strong>Blocksworld Performance:</strong>
+                          <ul>
+                            <li>97.8% accuracy on standard Blocksworld tasks, significantly outperforming prior LLMs</li>
+                            <li>Performance dropped to 52.8% on obfuscated Mystery Blocksworld tasks</li>
+                            <li>Only 23.6% success rate on larger problems requiring longer plans</li>
+                          </ul>
+                        </li>
+                        <li><strong>Unsolvable Task Detection:</strong>
+                          <ul>
+                            <li>Correctly identified 27% of unsolvable instances</li>
+                            <li>Generated incorrect plans in 54% of unsolvable scenarios</li>
+                            <li>Shows limited reliability in identifying impossible tasks</li>
+                          </ul>
+                        </li>
+                        <li><strong>Efficiency and Cost Analysis:</strong>
+                          <ul>
+                            <li>Significantly higher computational costs compared to traditional LLMs</li>
+                            <li>Classical planners like Fast Downward remain orders of magnitude faster and cheaper</li>
+                            <li>Trade-off between improved reasoning capabilities and computational efficiency</li>
+                          </ul>
+                        </li>
+                        <p class="mt-3 mb-0">Overall, while o1 shows substantial improvements over previous LLMs in structured reasoning, it faces challenges in scalability, efficiency, and reliability, especially on complex or obfuscated tasks.</p>
+                      </ul>
+                      <div class="text-center mt-3"></div>
+                        <img src="src/planning_2_rao.png" alt="Rao Planning" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Detection of unsolvable tasks</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td><span class="badge bg-domain-5">Planning</span></td>
+                <td>Benchmark</td>
+                <td>Meta-Reasoning Benchmark for System-2 Thinking</td>
+                <td><a href="https://arxiv.org/abs/2406.13975" target="_blank">Zeng et al.</a></td>                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#mrbenDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="mrbenDetails">
+                    <div class="card card-body">
+                      Improved performance in meta-reasoning and system-2 thinking tasks. The paper introduces MR-Ben, a meta-reasoning benchmark designed to evaluate the reasoning capabilities of large language models (LLMs) across diverse domains, including natural sciences, coding, and logic. Unlike traditional benchmarks that focus solely on accuracy, MR-Ben assesses the reasoning process itself by requiring models to identify and analyze errors in reasoning chains.
+                      <div class="text-center mt-3">
+                        <img src="src/mr_ben_planning.png" alt="MR-Ben" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Performance of o1 on MR-Ben</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Legal & Medical -->
+              <tr>
+                <td><span class="badge bg-domain-6">Legal</span></td>
+                <td>Research</td>
+                <td>X-Ray processing capabilities evaluation</td>
+                <td><a href="https://assets.cureus.com/uploads/original_article/pdf/316176/20241122-1342151-hf7hqt.pdf#page=1.29" target="_blank">Research Paper</a></td>
+                <td><span class="badge bg-success">Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#xrayDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="xrayDetails">
+                    <div class="card card-body">
+                      Improved capabilities in medical image processing and analysis. The overall accuracy rates of GPT-4o and o1-preview ranged from 57.5% to 70.0% and from 71.1% to 86.5%,
+                      respectively. The GPT-4o achieved passing accuracy rates in the subjects except for relevant laws and
+                      regulations. In contrast, o1-preview met the passing criteria across all four sets, despite graphical questions
+                      being excluded from scoring. The accuracy of all questions and relevant laws and regulations in o1-preview
+                      were significantly higher than those in GPT-4o (p = 0.03 for all questions and p = 0.03 for relevant laws and
+                      regulations, respectively). No significant differences in accuracy were found across the other subjects.
+                    </div>
+                    <div class="text-center mt-3"> 
+                      <img src="src/legal_reasoning.png" alt="X-Ray Legal" class="img-fluid rounded" style="max-width: 600px;">
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Reproducibility -->
+              <tr>
+                <td><span class="badge bg-domain-8">Reproducibility</span></td>
+                <td>Benchmark</td>
+                <td>Computational reproducibility evaluation on CORE-Bench</td>
+                <td><a href="https://agent-evals-leaderboard.hf.space" target="_blank">CORE-Bench</a></td>
+                <td><span class="badge bg-danger">No Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#reproDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="reproDetails">
+                    <div class="card card-body">
+                      No significant improvements in computational reproducibility benchmark on CORE-Bench. Claude 3.5 Sonnet clearly outperforms o1-mini getting 37.8% accuracy while o1-mini only gets 24.4% accuracy.
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- GAIA -->
+              <tr>
+                <td><span class="badge bg-domain-9">General AI <br>Assistant</span></td>
+                <td>Benchmark</td>
+                <td>GAIA benchmark evaluation</td>
+                <td><a href="" target="_blank">Our internal evals</a></td>
+                <td><span class="badge bg-danger">No Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#gaiaDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="gaiaDetails">
+                    <div class="card card-body">
+                      No significant improvements shown on GAIA benchmark with standard agent scaffolding. GAIA is a benchmark for General AI Assistants. GAIA proposes real-world questions that require a set of fundamental abilities such as reasoning, multi-modality handling, web browsing, and generally tool-use proficiency. o1-mini get 37% accuracy while Claude 3.5 Sonnet gets 58% accuracy and GPT-4o gets 35% accuracy.
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Writing -->
+              <tr>
+                <td><span class="badge bg-domain-11">Writing</span></td>
+                <td>Official Evaluation</td>
+                <td>Personal writing and text editing capabilities</td>
+                <td><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
+                <td><span class="badge bg-danger">No Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#writingDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="writingDetails">
+                    <div class="card card-body">
+                      No significant improvements in personal writing and text editing tasks. They evaluated human preference of o1-preview vs GPT-4o on challenging, open-ended prompts in a number of domains. In this evaluation, human trainers were shown anonymized responses to a prompt from o1-preview and GPT-4o, and voted for which response they preferred. o1-preview is not preferred on some natural language tasks like writing and text editing.
+                      <div class="text-center mt-3"> 
+                        <img src="src/personal_writing.png" alt="Personal Writing" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Personal writing and text editing tasks</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Human Tasks -->
+              <tr>
+                <td><span class="badge bg-domain-12">Human Tasks</span></td>
+                <td>Research Paper</td>
+                <td>Tasks where human intuition typically performs better</td>
+                <td><a href="https://arxiv.org/pdf/2410.21333" target="_blank">Liu et al.</a></td>
+                <td><span class="badge bg-danger">No Improvement</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#humanTasksDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="humanTasksDetails">
+                    <div class="card card-body">
+                      This paper investigates the impact of chain-of-thought (CoT) prompting on the performance of large language models (LLMs) across six task categories inspired by cognitive psychology. Key findings include:
+                      <ul>
+                        <li>Performance Decreases with CoT: CoT significantly reduced performance in tasks like implicit statistical learning, facial recognition, and classifying data with exceptions—tasks where verbal reasoning also impairs human performance. For instance, CoT decreased OpenAI o1-preview's accuracy by 36.3% in a grammar learning task.</li>
+
+                      </ul>
+                      <div class="text-center mt-3"> 
+                        <img src="src/grammar_learning.png" alt="Grammar Learning" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Performance of o1-preview on grammar learning task</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Scaling -->
+              <tr>
+                <td><span class="badge bg-domain-13">Scaling</span></td>
+                <td>Research</td>
+                <td>Analysis of performance scaling and compute requirements</td>
+                <td>
+                  <a href="https://github.com/hughbzhang/o1_inference_scaling_laws" target="_blank">Scaling Laws</a>
+
+                </td>
+                <td><span class="badge bg-info">Analysis</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#scalingDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="scalingDetails">
+                    <div class="card card-body">
+                      They evaluate on the 30 questions that make up the 2024 American Invitation Mathematics Examination (AIME). Using OpenAI's o1-mini, accuracy improves as test-time token budgets increase up to ~2^17 tokens. However, performance plateaus at ~70% accuracy beyond this point, even with self-consistency techniques like majority voting. This aligns with prior findings that such methods saturate after initial gains, emphasizing diminishing returns for extended inference budgets.
+                      <div class="text-center mt-3"> 
+                        <img src="src/flatten_scaling_curve.png" alt="Flattening Scaling Curve" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Performance of o1-mini on AIME reproduced from the offical evaluations and with larger token budgets. The curve flattens past 70% accuracy.</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-domain-13">Scaling</span></td>
+                <td>Research</td>
+                <td>EpochAI evaluation of o1-preview vs GPT-4o</td>
+                <td>
+                  <a href="https://x.com/EpochAIResearch/status/1838720157545648315" target="_blank">EpochAI</a>
+      
+                </td>
+                <td><span class="badge bg-info">Analysis</span></td>
+                <td>
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#scalingDetails2">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="scalingDetails2">
+                    <div class="card card-body">
+                      They plotted GPQA accuracy against the number of output tokens generated for both methods, and compared it to o1-preview's GPQA accuracy. While both methods improved GPT-4o's accuracy, they still significantly underperformed o1-preview at inference compute parity.
+                      <div class="text-center mt-3"> 
+                        <img src="src/gpqa_epoch.jpeg" alt="o1-preview outp" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Naively scaling inference compute isn't enough. o1-preview's superior performance likely stems from advanced RL techniques and better search methods.</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       
+      </tbody>
+    </table>
+  </div>
+
+        <div class="legend">
+          <div class="d-flex">
+            <strong>Status:</strong>
+            <div class="status-item">
+              <span class="badge bg-success">Improvement</span>
+              <span class="text">Evidence shows significant improvements</span>
+            </div>
+            <div class="status-item">
+              <span class="badge bg-danger">No Improvement</span>
+              <span class="text">Evidence shows no improvements or degradation</span>
+            </div>
+            <div class="status-item">
+              <span class="badge bg-info">Analysis</span>
+              <span class="text">Analytical findings or insights</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Enable all popovers
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl)
+    })
+
+    // Add smooth animation to collapse
+    document.addEventListener('DOMContentLoaded', function() {
+      var collapseElements = document.querySelectorAll('.collapse');
+      collapseElements.forEach(function(element) {
+        element.addEventListener('show.bs.collapse', function() {
+          this.style.transition = 'all 0.2s ease';
+        });
+      });
+    });
+
+    // Sorting function
+    function sortTable(direction) {
+      const table = document.getElementById('evidenceTable');
+      const tbody = table.querySelector('tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr:nth-child(odd)')); // Get only main rows, not detail rows
+
+      rows.sort((a, b) => {
+        const aText = a.querySelector('td:first-child .badge').textContent;
+        const bText = b.querySelector('td:first-child .badge').textContent;
+        return direction === 'asc' ? 
+          aText.localeCompare(bText) : 
+          bText.localeCompare(aText);
+      });
+
+      // Reorder rows while keeping their detail rows together
+      rows.forEach(row => {
+        const detailRow = row.nextElementSibling;
+        tbody.appendChild(row);
+        tbody.appendChild(detailRow);
+      });
+    }
+
+    // Filtering function
+    function filterDomain(domain) {
+      const rows = document.querySelectorAll('#evidenceTable tbody tr:nth-child(odd)');
+      rows.forEach(row => {
+        const detailRow = row.nextElementSibling;
+        const rowDomain = row.querySelector('td:first-child .badge').textContent;
+        if (domain === 'all' || rowDomain === domain) {
+          row.style.display = '';
+          detailRow.style.display = '';
+        } else {
+          row.style.display = 'none';
+          detailRow.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
