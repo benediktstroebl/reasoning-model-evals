@@ -15,8 +15,8 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          <h1>o1 Model Evaluations</h1>
-          <p class="lead">Evidence showing how reasoning models (e.g., o1) compare to non-reasoning models across different domains</p>
+          <h1>Reasoning Model Evaluations</h1>
+          <p class="lead">Evidence showing how reasoning models (e.g., o1) compare to non-reasoning models (.e.g, gpt-4o) across different domains</p>
         </div>
       </div>
     </div>
@@ -57,10 +57,27 @@
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Writing')">Writing</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Human Tasks')">Human Tasks</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Scaling')">Scaling</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('QA')">QA</a></li>
                     </ul>
                   </div>
                 </th>
                 <th style="width: 140px">Evidence Type</th>
+                <th style="width: 120px">
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-light dropdown-toggle w-100" type="button" id="modelsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      Models
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="modelsDropdown">
+                      <li><h6 class="dropdown-header">Filter by Model</h6></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterModel('all')">Show All</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterModel('o1-preview')">o1-preview</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterModel('o1-mini')">o1-mini</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterModel('o1-pro')">o1-pro</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterModel('o1')">o1</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterModel('R1-Lite-Preview')">DeepSeek R1-Lite-Preview</a></li>
+                    </ul>
+                  </div>
+                </th>
                 <th>Description</th>
                 <th style="width: 140px">Source</th>
                 <th style="width: 120px">Status</th>
@@ -72,6 +89,10 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-1">Coding</span></td>
                 <td data-label="Evidence Type">Internal Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Evaluation of o1's reasoning capabilities with Devin using cognition-golden benchmark</td>
                 <td data-label="Source"><a href="https://x.com/cognition_labs/status/1834292718174077014" target="_blank">Cognition Labs</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -119,6 +140,11 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-1">Coding</span></td>
                 <td data-label="Evidence Type">Official Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1</span>
+                  <span class="badge bg-model">o1-pro</span>
+                </td>
                 <td data-label="Description">OpenAI's official evaluation of o1 on coding tasks</td>
                 <td data-label="Source"><a href="https://openai.com/index/learning-to-reason-with-llms/" target="_blank">OpenAI</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -132,7 +158,7 @@
                 <td colspan="6" class="p-0">
                   <div class="collapse" id="openaiCodingDetails">
                     <div class="card card-body">
-                      <p>Part of the official OpenAI o1 evaluations focused on coding and programming, where o1 achieved notable improvements. In the International Olympiad in Informatics (IOI), it ranked competitively under standard conditions and performed even better with relaxed constraints. In Codeforces evaluations, o1 surpassed prior models.</p>
+                      Part of the official OpenAI o1 evaluations focused on coding and programming, where o1 achieved notable improvements. In the International Olympiad in Informatics (IOI), it ranked competitively under standard conditions and performed even better with relaxed constraints. In Codeforces evaluations, o1 surpassed prior models.</p>
                       <div class="eval-images mt-3">
                         <div class="text-center mb-3">
                           <img src="src/codeforces_competition.png" alt="Codeforces Competition" class="img-fluid rounded" style="max-width: 600px;">
@@ -141,6 +167,10 @@
                         <div class="text-center mb-3">
                           <img src="src/codeforces_elo.webp" alt="Codeforces Elo Comparison" class="img-fluid rounded" style="max-width: 600px;">
                           <p class="text-muted mt-2"><small>Codeforces Elo Comparison Graph</small></p>
+                        </div>
+                        <div class="text-center mb-3">
+                          <img src="src/o1_pro.png" alt="o1 and o1-pro results on coding, math, and qa tasks" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>o1 and o1-pro results on coding, math, and qa tasks</small></p>
                         </div>
                       </div>
                     </div>
@@ -151,6 +181,10 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-1">Coding</span></td>
                 <td data-label="Evidence Type">Benchmark</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Performance on USACO programming competition tasks</td>
                 <td data-label="Source"><a href="https://x.com/BenShi34/status/1841204327811334350" target="_blank">USACO Results</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -178,6 +212,11 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-2">Reliability</span></td>
                 <td data-label="Evidence Type">Official Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1</span>
+                  <span class="badge bg-model">o1-pro</span>
+                </td>
                 <td data-label="Description">OpenAI's evaluation of model reliability</td>
                 <td data-label="Source"><a href="https://youtu.be/iBfQTnA2n2s?si=a-760cPz5ZghJc7w&t=161" target="_blank">OpenAI</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -196,6 +235,10 @@
                         <img src="src/reliability.png" alt="OpenAI Reliability" class="img-fluid rounded" style="max-width: 600px;">
                         <p class="text-muted mt-2"><small>Worst of 4 performance of o1 series of models as reported by OpenAI</small></p>
                       </div>
+                      <div class="text-center mb-3">
+                          <img src="src/o1_pro_reliability.png" alt="o1 and o1-pro results on coding, math, and qa tasks showing 4/4 performance" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>o1 and o1-pro results on coding, math, and qa showing with 4/4 performance</small></p>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -204,6 +247,11 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-2">QA</span></td>
                 <td data-label="Evidence Type">Official Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1</span>
+                  <span class="badge bg-model">o1-pro</span>
+                </td>
                 <td data-label="Description">OpenAI's evaluation of question answering capabilities</td>
                 <td data-label="Source"><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -222,6 +270,10 @@
                         <img src="src/qa.png" alt="OpenAI QA" class="img-fluid rounded" style="max-width: 600px;">
                         <p class="text-muted mt-2"><small>OpenAI evaluation results on QA benchmarks</small></p>
                       </div>
+                      <div class="text-center mb-3">
+                          <img src="src/o1_pro.png" alt="o1 and o1-pro results on coding, math, and qa tasks" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>o1 and o1-pro results on coding, math, and qa tasks</small></p>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -231,6 +283,11 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-3">Mathematics</span></td>
                 <td data-label="Evidence Type">Official Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1</span>
+                  <span class="badge bg-model">o1-pro</span>
+                </td>
                 <td data-label="Description">OpenAI's evaluation of mathematical reasoning capabilities</td>
                 <td data-label="Source"><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -249,6 +306,10 @@
                         <img src="src/codeforces_competition.png" alt="OpenAI Math" class="img-fluid rounded" style="max-width: 600px;">
                         <p class="text-muted mt-2"><small>OpenAI's evaluation of o1's mathematical reasoning capabilities</small></p>
                       </div>
+                      <div class="text-center mb-3">
+                          <img src="src/o1_pro.png" alt="o1 and o1-pro results on coding, math, and qa tasks" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>o1 and o1-pro results on coding, math, and qa tasks</small></p>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -258,6 +319,10 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-4">Cybersecurity</span></td>
                 <td data-label="Evidence Type">Research Paper</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Evaluation by Turing Institute on cybersecurity capabilities</td>
                 <td data-label="Source"><a href="https://arxiv.org/pdf/2410.21939" target="_blank">Turing Institute</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -284,6 +349,9 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-4">Cybersecurity</span></td>
                 <td data-label="Evidence Type">Benchmark</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                </td>
                 <td data-label="Description">Offical results from the CyBench cybersecurity benchmark leaderboard</td>
                 <td data-label="Source">
                   <a href="https://cybench.github.io/" target="_blank">CyBench</a>
@@ -315,6 +383,10 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-5">Planning</span></td>
                 <td data-label="Evidence Type">Research Paper</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Analysis of planning and reasoning capabilities on various benchmarks</td>
                 <td data-label="Source"><a href="https://arxiv.org/pdf/2409.13373" target="_blank">Rao et al.</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -368,6 +440,10 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-5">Planning</span></td>
                 <td data-label="Evidence Type">Benchmark</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Results from the MR-Ben meta-reasoning benchmark</td>
                 <td data-label="Source"><a href="https://arxiv.org/abs/2406.13975" target="_blank">Zeng et al.</a></td>                <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
                 <td data-label="Details">
@@ -394,6 +470,9 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-6">Legal</span></td>
                 <td data-label="Evidence Type">Research Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                </td>
                 <td data-label="Description">Results from Japanese certification examination for 'Operations Chief of Radiography With X-rays</td>
                 <td data-label="Source"><a href="https://assets.cureus.com/uploads/original_article/pdf/316176/20241122-1342151-hf7hqt.pdf#page=1.29" target="_blank">Goto et al.</a></td>
                 <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
@@ -425,8 +504,11 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-8">Reproducibility</span></td>
                 <td data-label="Evidence Type">Benchmark</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Computational reproducibility evaluation on CORE-Bench</td>
-                <td data-label="Source"><a href="https://agent-evals-leaderboard.hf.space" target="_blank">CORE-Bench</a></td>
+                <td data-label="Source"><a href="https://agent-evals-core-leaderboard.hf.space" target="_blank">CORE-Bench</a></td>
                 <td data-label="Status"><span class="badge bg-danger">No Improvement</span></td>
                 <td data-label="Details">
                   <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#reproDetails">
@@ -448,6 +530,9 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-9">General AI <br>Assistant</span></td>
                 <td data-label="Evidence Type">Benchmark</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">GAIA benchmark evaluation</td>
                 <td data-label="Source"><a href="" target="_blank">Our internal evals</a></td>
                 <td data-label="Status"><span class="badge bg-danger">No Improvement</span></td>
@@ -471,6 +556,9 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-11">Writing</span></td>
                 <td data-label="Evidence Type">Official Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                </td>
                 <td data-label="Description">OpenAI's evaluation of personal writing and text editing capabilities</td>
                 <td data-label="Source"><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
                 <td data-label="Status"><span class="badge bg-danger">No Improvement</span></td>
@@ -498,6 +586,9 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-12">Human Tasks</span></td>
                 <td data-label="Evidence Type">Research Paper</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                </td>
                 <td data-label="Description">Tasks where human intuition typically performs better</td>
                 <td data-label="Source"><a href="https://arxiv.org/pdf/2410.21333" target="_blank">Liu et al.</a></td>
                 <td data-label="Status"><span class="badge bg-danger">No Improvement</span></td>
@@ -529,6 +620,9 @@
               <tr>
                 <td data-label="Domain"><span class="badge bg-domain-13">Scaling</span></td>
                 <td data-label="Evidence Type">Analysis</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-mini</span>
+                </td>
                 <td data-label="Description">Analysis of performance scaling and compute requirements</td>
                 <td data-label="Source">
                   <a href="https://github.com/hughbzhang/o1_inference_scaling_laws" target="_blank">Scaling Laws</a>
@@ -554,9 +648,14 @@
                   </div>
                 </td>
               </tr>
+
+              <!-- EpochAI -->
               <tr>
-                <td data-label="Domain"><span class="badge bg-domain-13">Scaling</span></td>
+                <td data-label="Domain"><span class="badge bg-domain-13">Official Evaluation</span></td>
                 <td data-label="Evidence Type">Analysis</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                </td>
                 <td data-label="Description">EpochAI evaluation of o1-preview vs GPT-4o</td>
                 <td data-label="Source">
                   <a href="https://x.com/EpochAIResearch/status/1838720157545648315" target="_blank">EpochAI</a>
@@ -577,6 +676,48 @@
                       <div class="text-center mt-3"> 
                         <img src="src/gpqa_epoch.jpeg" alt="o1-preview outp" class="img-fluid rounded" style="max-width: 600px;">
                         <p class="text-muted mt-2"><small>Naively scaling inference compute isn't enough. o1-preview's superior performance likely stems from advanced RL techniques and better search methods.</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- DeepSeek -->
+              <tr>
+                <td data-label="Domain">
+                  <span class="badge bg-domain-13">Mathematics</span>
+                  <span class="badge bg-domain-1">Coding</span>
+                  <span class="badge bg-domain-2">QA</span>
+                </td>
+                <td data-label="Evidence Type">Offical Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">R1-Lite-Preview</span>
+                </td>
+                <td data-label="Description">DeepSeek's offical evaluations of their R1 reasoning model</td>
+                <td data-label="Source">
+                  <a href="https://x.com/deepseek_ai/status/1859200145037869485" target="_blank">DeepSeek</a>
+      
+                </td>
+                <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
+                <td data-label="Details">
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#deepseekDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="deepseekDetails">
+                    <div class="card card-body">
+                      DeepSeek's R1-Lite-Preview outperforms GPT-4o on all tasks related to coding, math, and QA. It is also competitive with o1-preview. 
+                      <div class="text-center mt-3"> 
+                        <img src="src/deepseek_r1_evals.jpeg" alt="DeepSeek R1-Lite-Preview" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>DeepSeek's R1-Lite-Preview outperforms GPT-4o on all tasks.</small></p>
+                      </div>
+                      Inference Scaling Laws of DeepSeek-R1-Lite-Preview Longer Reasoning, Better Performance. DeepSeek-R1-Lite-Preview shows steady score improvements on AIME as thought length increases.
+                      <div class="text-center mt-3"> 
+                        <img src="src/deepseek_scaling.jpeg" alt="DeepSeek R1-Lite-Preview" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>DeepSeek's R1-Lite-Preview shows steady score improvements on AIME as thought length increases.</small></p>
                       </div>
                     </div>
                   </div>
@@ -672,15 +813,35 @@
       const rows = document.querySelectorAll('#evidenceTable tbody tr:nth-child(odd)');
       rows.forEach(row => {
         const detailRow = row.nextElementSibling;
-        const rowDomain = row.querySelector('td:first-child .badge').textContent;
-        if (domain === 'all' || rowDomain === domain) {
+        const domainBadges = row.querySelector('td:first-child').getElementsByClassName('badge');
+        const hasDomain = domain === 'all' || Array.from(domainBadges).some(badge => badge.textContent === domain);
+        
+        if (hasDomain) {
           row.style.display = '';
           detailRow.style.display = '';
         } else {
-          row.style.display = 'none';
+          row.style.display = 'none'; 
           detailRow.style.display = 'none';
         }
       });
+    }
+
+    // Add this to your existing script section
+    function filterModel(model) {
+        const rows = document.querySelectorAll('#evidenceTable tbody tr:nth-child(odd)');
+        rows.forEach(row => {
+            const detailRow = row.nextElementSibling;
+            const modelBadges = row.querySelector('td:nth-child(3)').getElementsByClassName('badge');
+            const hasModel = model === 'all' || Array.from(modelBadges).some(badge => badge.textContent === model);
+            
+            if (hasModel) {
+                row.style.display = '';
+                detailRow.style.display = '';
+            } else {
+                row.style.display = 'none';
+                detailRow.style.display = 'none';
+            }
+        });
     }
   </script>
 </body>

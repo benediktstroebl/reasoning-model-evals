@@ -41,13 +41,6 @@
     background-color: #f8f9fa;
 }
 
-.badge {
-    font-weight: 500;
-    font-size: 0.9em;
-    padding: 0.4em 0.8em;
-    margin-right: 0.5em;
-}
-
 /* Domain badges */
 .bg-domain-1 { background-color: #e3f2fd; color: #0d47a1; }
 .bg-domain-2 { background-color: #e8f5e9; color: #1b5e20; }
@@ -282,13 +275,13 @@ ul {
 
 .table th:nth-child(3),
 .table td:nth-child(3) {
-    width: auto;
-    max-width: 300px;
+    width: 120px;
 }
 
 .table th:nth-child(4),
 .table td:nth-child(4) {
-    width: 140px;
+    width: auto;
+    max-width: 300px;
 }
 
 .table th:nth-child(5),
@@ -298,6 +291,12 @@ ul {
 
 .table th:nth-child(6),
 .table td:nth-child(6) {
+    width: 120px;
+    padding-right: 2rem;
+}
+
+.table th:nth-child(7),
+.table td:nth-child(7) {
     width: 100px;
 }
 
@@ -405,17 +404,18 @@ ul {
     .table td:nth-child(3),
     .table td:nth-child(4),
     .table td:nth-child(5),
-    .table td:nth-child(6) {
+    .table td:nth-child(6),
+    .table td:nth-child(7) {
         width: 100%;
         max-width: none;
     }
 
     /* Adjust collapse rows */
-    .table tr td[colspan="6"] {
+    .table tr td[colspan="7"] {
         padding-left: 1rem;
     }
 
-    .table tr td[colspan="6"]:before {
+    .table tr td[colspan="7"]:before {
         display: none;
     }
 
@@ -423,5 +423,23 @@ ul {
     .card-body img {
         width: 100%;
         height: auto;
+    }
+}
+
+/* Model badges */
+.bg-model {
+    background-color: #f0f0f0;
+    color: #4a4a4a;
+    font-size: 0.8em;
+    padding: 0.3em 0.6em;
+    margin-right: 0.3em;
+    margin-bottom: 0.3em;
+    display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+    .bg-model {
+        display: inline-block;
+        margin-bottom: 0.3em;
     }
 }
