@@ -86,7 +86,13 @@
                   <div class="collapse" id="cognitionDetails">
                     <div class="card card-body">
                       <ul>
-                        <li><strong>Evaluation Method:</strong> They evaluate their SWE agent Devin with an internal benchmark called 'cognition-golden'. We created realistic evaluations for economically valuable tasks, sometimes on codebases with millions of lines of code. The environments are fully reproducible and have autonomous feedback.</li>
+                        Cognition Labs evaluated their SWE agent Devin with an internal benchmark called 'cognition-golden'. They created this evaluation to model economically valuable tasks. More details below.</li>
+
+                        <div class="text-center mt-3">
+                          <img src="src/cognition.png" alt="Cognition Labs evaluation of Devin" class="img-fluid rounded" style="max-width: 600px;">
+                          <p class="text-muted mt-2"><small>Cognition Labs evaluation of Devin</small></p>
+                        </div>
+
                         <li><strong>Key Findings:</strong>
                           <ul>
                             <li>Improved reflection and analysis capabilities</li>
@@ -95,20 +101,13 @@
                             <li>Better at diagnosing root causes vs addressing symptoms</li>
                           </ul>
                         </li>
-                        <li><strong>Evaluation Framework:</strong>
+                        <li><strong>Evaluation harness:</strong>
                           <ul>
                             <li>'cognition-golden' benchmark with realistic, economically valuable tasks</li>
                             <li>Tests on large codebases (millions of lines)</li>
                             <li>Fully reproducible environments with autonomous feedback</li>
                             <li>Uses simulated users for interaction testing</li>
                             <li>Employs agent-based evaluation with visual verification</li>
-                          </ul>
-                        </li>
-                        <li><strong>Prompting Insights:</strong>
-                          <ul>
-                            <li>Direct answers often better than chain-of-thought prompting</li>
-                            <li>Requires denser context, sensitive to token clutter</li>
-                            <li>Less effective with highly prescriptive instructions</li>
                           </ul>
                         </li>
                       </ul>
@@ -195,7 +194,7 @@
                       Official evaluations showing improved worst of 4 performance on math, coding, and qa tasks
                       <div class="text-center mt-3">
                         <img src="src/reliability.png" alt="OpenAI Reliability" class="img-fluid rounded" style="max-width: 600px;">
-                        <p class="text-muted mt-2"><small>OpenAI Reliability</small></p>
+                        <p class="text-muted mt-2"><small>Worst of 4 performance of o1 series of models as reported by OpenAI</small></p>
                       </div>
                     </div>
                   </div>
@@ -205,7 +204,7 @@
               <tr>
                 <td><span class="badge bg-domain-2">QA</span></td>
                 <td>Official Evaluation</td>
-                <td>Question answering capabilities evaluation</td>
+                <td>OpenAI's evaluation of question answering capabilities</td>
                 <td><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
                 <td><span class="badge bg-success">Improvement</span></td>
                 <td>
@@ -221,7 +220,7 @@
                       o1 improves over GPT-4o on a wide range of benchmarks, including 54/57 MMLU subcategories.
                       <div class="text-center mt-3">
                         <img src="src/qa.png" alt="OpenAI QA" class="img-fluid rounded" style="max-width: 600px;">
-                        <p class="text-muted mt-2"><small>OpenAI QA</small></p>
+                        <p class="text-muted mt-2"><small>OpenAI evaluation results on QA benchmarks</small></p>
                       </div>
                     </div>
                   </div>
@@ -232,7 +231,7 @@
               <tr>
                 <td><span class="badge bg-domain-3">Mathematics</span></td>
                 <td>Official Evaluation</td>
-                <td>Evaluation of mathematical reasoning capabilities</td>
+                <td>OpenAI's evaluation of mathematical reasoning capabilities</td>
                 <td><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
                 <td><span class="badge bg-success">Improvement</span></td>
                 <td>
@@ -285,11 +284,11 @@
               <tr>
                 <td><span class="badge bg-domain-4">Cybersecurity</span></td>
                 <td>Benchmark</td>
-                <td>Official cybersecurity benchmark results</td>
+                <td>Offical results from the CyBench cybersecurity benchmark leaderboard</td>
                 <td>
                   <a href="https://cybench.github.io/" target="_blank">CyBench</a>
-                  <br>
-                  <a href="https://agent-evals-leaderboard.hf.space" target="_blank">HAL Evals</a>
+                  <!-- <br>
+                  <a href="https://agent-evals-leaderboard.hf.space" target="_blank">HAL Evals</a> -->
                 </td>
                 <td><span class="badge bg-danger">No Improvement</span></td>
                 <td>
@@ -316,7 +315,7 @@
               <tr>
                 <td><span class="badge bg-domain-5">Planning</span></td>
                 <td>Research Paper</td>
-                <td>Analysis of planning and reasoning capabilities on benchmarks</td>
+                <td>Analysis of planning and reasoning capabilities on various benchmarks</td>
                 <td><a href="https://arxiv.org/pdf/2409.13373" target="_blank">Rao et al.</a></td>
                 <td><span class="badge bg-success">Improvement</span></td>
                 <td>
@@ -369,7 +368,7 @@
               <tr>
                 <td><span class="badge bg-domain-5">Planning</span></td>
                 <td>Benchmark</td>
-                <td>Meta-Reasoning Benchmark for System-2 Thinking</td>
+                <td>Results from the MR-Ben meta-reasoning benchmark</td>
                 <td><a href="https://arxiv.org/abs/2406.13975" target="_blank">Zeng et al.</a></td>                <td><span class="badge bg-success">Improvement</span></td>
                 <td>
                   <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#mrbenDetails">
@@ -395,8 +394,8 @@
               <tr>
                 <td><span class="badge bg-domain-6">Legal</span></td>
                 <td>Research</td>
-                <td>X-Ray processing capabilities evaluation</td>
-                <td><a href="https://assets.cureus.com/uploads/original_article/pdf/316176/20241122-1342151-hf7hqt.pdf#page=1.29" target="_blank">Research Paper</a></td>
+                <td>Results from Japanese certification examination for 'Operations Chief of Radiography With X-rays</td>
+                <td><a href="https://assets.cureus.com/uploads/original_article/pdf/316176/20241122-1342151-hf7hqt.pdf#page=1.29" target="_blank">Goto et al.</a></td>
                 <td><span class="badge bg-success">Improvement</span></td>
                 <td>
                   <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#xrayDetails">
@@ -472,7 +471,7 @@
               <tr>
                 <td><span class="badge bg-domain-11">Writing</span></td>
                 <td>Official Evaluation</td>
-                <td>Personal writing and text editing capabilities</td>
+                <td>OpenAI's evaluation of personal writing and text editing capabilities</td>
                 <td><a href="https://openai.com/o1/" target="_blank">OpenAI</a></td>
                 <td><span class="badge bg-danger">No Improvement</span></td>
                 <td>
@@ -596,15 +595,15 @@
             <strong>Status:</strong>
             <div class="status-item">
               <span class="badge bg-success">Improvement</span>
-              <span class="text">Evidence shows significant improvements</span>
+              <span class="text">Evidence shows significant improvements over non-reasoning models</span>
             </div>
             <div class="status-item">
               <span class="badge bg-danger">No Improvement</span>
-              <span class="text">Evidence shows no improvements or degradation</span>
+              <span class="text">Evidence shows no improvements over non-reasoning models</span>
             </div>
             <div class="status-item">
               <span class="badge bg-info">Analysis</span>
-              <span class="text">Analytical findings or insights</span>
+              <span class="text">Other relevant evidence or analysis</span>
             </div>
           </div>
         </div>
