@@ -54,6 +54,7 @@
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Reproducibility')">Reproducibility</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('GAIA')">GAIA</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Safety')">Safety</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterDomain('Toxicity')">Toxicity</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Writing')">Writing</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Human Tasks')">Human Tasks</a></li>
                       <li><a class="dropdown-item" href="#" onclick="filterDomain('Scaling')">Scaling</a></li>
@@ -508,7 +509,7 @@
                   <span class="badge bg-model">o1-mini</span>
                 </td>
                 <td data-label="Description">Computational reproducibility evaluation on CORE-Bench</td>
-                <td data-label="Source"><a href="https://agent-evals-core-leaderboard.hf.space" target="_blank">CORE-Bench</a></td>
+                <td data-label="Source"><a href="https://agent-evals-core-leaderboard.hf.space" target="_blank">CORE-Bench Leaderboard</a></td>
                 <td data-label="Status"><span class="badge bg-danger">No Improvement</span></td>
                 <td data-label="Details">
                   <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#reproDetails">
@@ -718,6 +719,76 @@
                       <div class="text-center mt-3"> 
                         <img src="src/deepseek_scaling.jpeg" alt="DeepSeek R1-Lite-Preview" class="img-fluid rounded" style="max-width: 600px;">
                         <p class="text-muted mt-2"><small>DeepSeek's R1-Lite-Preview shows steady score improvements on AIME as thought length increases.</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Safety o1 -->
+              <tr>
+                <td data-label="Domain">
+                  <span class="badge bg-domain-9">Safety</span>
+                </td>
+                <td data-label="Evidence Type">Offical Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">o1-preview</span>
+                </td>
+                <td data-label="Description">OpenAI's offical safety evaluations</td>
+                <td data-label="Source">
+                  <a href="https://openai.com/index/learning-to-reason-with-llms/" target="_blank">OpenAI</a>
+      
+                </td>
+                <td data-label="Status"><span class="badge bg-success">Improvement</span></td>
+                <td data-label="Details">
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#deepseekDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="deepseekDetails">
+                    <div class="card card-body">
+                      OpenAI conducted a set of safety tests and red-teaming before deployment, in accordance with their Preparedness Framework. They found that chain of thought reasoning contributed to capability improvements across our evaluations.
+                      <div class="text-center mt-3"> 
+                        <img src="src/o1_safety.png" alt="o1-preview safety" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>o1-preview safety evaluations</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Toxicity -->
+              <tr>
+                <td data-label="Domain">
+                  <span class="badge bg-domain-5">Toxicity</span>
+                </td>
+                <td data-label="Evidence Type">Research Evaluation</td>
+                <td data-label="Models">
+                  <span class="badge bg-model">Other</span>
+                </td>
+                <td data-label="Description">Eval of bias and toxicity in zero-shot reasoning with CoT</td>
+                <td data-label="Source">
+                  <a href="https://arxiv.org/pdf/2212.08061" target="_blank">Shaikh et al.</a>
+      
+                </td>
+                <td data-label="Status"><span class="badge bg-danger">No Improvement</span></td>
+                <td data-label="Details">
+                  <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#toxicityDetails">
+                    Details
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="p-0">
+                  <div class="collapse" id="toxicityDetails">
+                    <div class="card card-body">
+                      The authors conducted experiments on various datasets to evaluate the bias and toxicity of zero-shot reasoning with CoT. They found that CoT reasoning significantly decreased the likelihood of generating non-toxic answer.
+                      <div class="text-center mt-3"> 
+                        <img src="src/toxicity.png" alt="toxicity" class="img-fluid rounded" style="max-width: 600px;">
+                        <p class="text-muted mt-2"><small>Results of how CoT reasoning affects toxicity in zero-shot reasoning</small></p>
                       </div>
                     </div>
                   </div>
