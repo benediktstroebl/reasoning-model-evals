@@ -69,7 +69,25 @@
                     </ul>
                   </div>
                 </th>
-                <th style="width: 120px">Evidence Type</th>
+                <th style="width: 120px">
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-light dropdown-toggle w-100" type="button" id="evidenceTypeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      Evidence Type
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="evidenceTypeDropdown">
+                      <li><a class="dropdown-item" href="#" onclick="sortTable('asc', 1)">Sort A-Z</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="sortTable('desc', 1)">Sort Z-A</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><h6 class="dropdown-header">Filter by Type</h6></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterEvidenceType('all')">Show All</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterEvidenceType('Analysis')">Analysis</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterEvidenceType('Benchmark')">Benchmark</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterEvidenceType('Internal Evaluation')">Internal Evaluation</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterEvidenceType('Official Evaluation')">Official Evaluation</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="filterEvidenceType('Research Paper')">Research Paper</a></li>
+                    </ul>
+                  </div>
+                </th>
                 <th style="width: 120px">
                   <div class="dropdown">
                     <button class="btn btn-sm btn-light dropdown-toggle w-100" type="button" id="modelsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -970,6 +988,24 @@
                 detailRow.style.display = 'none';
             }
         });
+    }
+
+    // Add this to your existing script section
+    function filterEvidenceType(type) {
+      const rows = document.querySelectorAll('#evidenceTable tbody tr:nth-child(odd)');
+      rows.forEach(row => {
+        const detailRow = row.nextElementSibling;
+        const evidenceType = row.querySelector('td:nth-child(2)').textContent.trim();
+        const matches = type === 'all' || evidenceType === type;
+        
+        if (matches) {
+          row.style.display = '';
+          detailRow.style.display = '';
+        } else {
+          row.style.display = 'none';
+          detailRow.style.display = 'none';
+        }
+      });
     }
   </script>
 </body>
