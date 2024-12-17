@@ -491,7 +491,7 @@
                   <span class="badge bg-domain-6">Legal</span>
                   <span class="badge bg-domain-7">Medical</span>
                 </td>
-                <td data-label="Evidence Type">Research Evaluation</td>
+                <td data-label="Evidence Type">Research Paper</td>
                 <td data-label="Models">
                   <span class="badge bg-model">o1-preview</span>
                 </td>
@@ -795,7 +795,7 @@
                 <td data-label="Domain">
                   <span class="badge bg-domain-5">Toxicity</span>
                 </td>
-                <td data-label="Evidence Type">Research Evaluation</td>
+                <td data-label="Evidence Type">Research Paper</td>
                 <td data-label="Models">
                   <span class="badge bg-model">Other</span>
                 </td>
@@ -906,14 +906,18 @@
     });
 
     // Sorting function
-    function sortTable(direction) {
+    function sortTable(direction, column = 0) {
       const table = document.getElementById('evidenceTable');
       const tbody = table.querySelector('tbody');
       const rows = Array.from(tbody.querySelectorAll('tr:nth-child(odd)')); // Get only main rows, not detail rows
 
       rows.sort((a, b) => {
-        const aText = a.querySelector('td:first-child .badge').textContent;
-        const bText = b.querySelector('td:first-child .badge').textContent;
+        const aText = column === 0 ? 
+          a.querySelector('td:first-child .badge').textContent :
+          a.querySelector(`td:nth-child(${column + 1})`).textContent;
+        const bText = column === 0 ?
+          b.querySelector('td:first-child .badge').textContent :
+          b.querySelector(`td:nth-child(${column + 1})`).textContent;
         return direction === 'asc' ? 
           aText.localeCompare(bText) : 
           bText.localeCompare(aText);
@@ -926,6 +930,11 @@
         tbody.appendChild(detailRow);
       });
     }
+
+    // Add this to initialize sorting by Evidence Type when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      sortTable('asc', 1); // Sort by Evidence Type (column index 1) in ascending order
+    });
 
     // Filtering function
     function filterDomain(domain) {
