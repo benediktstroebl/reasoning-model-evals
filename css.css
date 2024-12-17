@@ -42,19 +42,27 @@
 }
 
 /* Domain badges */
-.bg-domain-1 { background-color: #e3f2fd; color: #0d47a1; }
-.bg-domain-2 { background-color: #e8f5e9; color: #1b5e20; }
-.bg-domain-3 { background-color: #fff3e0; color: #e65100; }
-.bg-domain-4 { background-color: #f3e5f5; color: #4a148c; }
-.bg-domain-5 { background-color: #e0f2f1; color: #004d40; }
-.bg-domain-6 { background-color: #fce4ec; color: #880e4f; }
-.bg-domain-7 { background-color: #f1f8e9; color: #33691e; }
-.bg-domain-8 { background-color: #e8eaf6; color: #1a237e; }
-.bg-domain-9 { background-color: #fff8e1; color: #ff6f00; }
-.bg-domain-10 { background-color: #ffebee; color: #b71c1c; }
-.bg-domain-11 { background-color: #e0f7fa; color: #006064; }
-.bg-domain-12 { background-color: #f9fbe7; color: #827717; }
-.bg-domain-13 { background-color: #efebe9; color: #3e2723; }
+.bg-domain-1,
+.bg-domain-2,
+.bg-domain-3,
+.bg-domain-4,
+.bg-domain-5,
+.bg-domain-6,
+.bg-domain-7,
+.bg-domain-8,
+.bg-domain-9,
+.bg-domain-10,
+.bg-domain-11,
+.bg-domain-12,
+.bg-domain-13 {
+    background-color: #f0f0f0;
+    color: #4a4a4a;
+    font-size: 0.8em;
+    padding: 0.3em 0.6em;
+    margin-right: 0.3em;
+    margin-bottom: 0.3em;
+    display: inline-block;
+}
 
 /* Status Colors */
 .bg-success {
